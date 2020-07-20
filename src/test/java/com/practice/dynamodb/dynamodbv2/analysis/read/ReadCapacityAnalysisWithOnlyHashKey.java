@@ -43,7 +43,7 @@ public class ReadCapacityAnalysisWithOnlyHashKey {
 
     this.dynamoDB = new DynamoDB(this.amazonDynamoDB);
 
-    createTable(dynamoDB, PRODUCT_TABLE_NAME, PRODUCT_CATALOG_PARTITION_KEY);
+    //createTable(dynamoDB, PRODUCT_TABLE_NAME, PRODUCT_CATALOG_PARTITION_KEY);
   }
 
   @Test
@@ -67,6 +67,7 @@ public class ReadCapacityAnalysisWithOnlyHashKey {
 
     GetItemSpec getItemSpec = new GetItemSpec()
         .withPrimaryKey("productId", "999")
+        .withConsistentRead(true)
         .withReturnConsumedCapacity(INDEXES);
 
     GetItemOutcome result = table.getItemOutcome(getItemSpec);
