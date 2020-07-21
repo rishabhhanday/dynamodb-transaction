@@ -67,7 +67,7 @@ class InitTableWIthHashKey {
   void insertProducts() throws InterruptedException {
     createTable(dynamoDB, PRODUCT_TABLE_NAME, PRODUCT_CATALOG_PARTITION_KEY);
 
-    for (int rounds = 1; rounds <= 40; rounds++) {
+    for (int rounds = 1; rounds <= 100; rounds++) {
       List<Put> putItems = new ArrayList<>();
 
       for (int i = 1 + ((rounds - 1) * 25); i <= rounds * 25; i++) {
